@@ -13,8 +13,8 @@
 
 (defwidget left-panel []
   (box :class "left-panel" :orientation "v" :space-evenly false :spacing 14
-    (box :class "section" :orientation "v" :spacing 4
-      (label :class "section-title" :text "󰃭  Calendar" :halign "start")
+    (box :class "section" :orientation "v" :spacing 6
+      (label :class "section-title" :text "󰃭  Calendar" :halign "center")
       (label :class "cal" :text cal :halign "center" :justify "left"))
     (box :class "divider")
     (box :class "section" :orientation "v" :spacing 6
@@ -48,7 +48,7 @@
 (defwindow left-panel
   :monitor 0
   :geometry (geometry :x "8px" :y "76px" :width "280px" :height "500px" :anchor "top left")
-  :stacking "fg"
+  :stacking "overlay"
   :focusable false
   :exclusive false
   (left-panel))
@@ -56,7 +56,7 @@
 (defwindow right-panel
   :monitor 0
   :geometry (geometry :x "8px" :y "76px" :width "280px" :height "500px" :anchor "top right")
-  :stacking "fg"
+  :stacking "overlay"
   :focusable false
   :exclusive false
   (right-panel))
@@ -64,9 +64,10 @@
 (defwindow clock-panel
   :monitor 0
   :geometry (geometry :x "0px" :y "0px" :width "380px" :height "140px" :anchor "center")
-  :stacking "fg"
+  :stacking "overlay"
   :focusable false
   :exclusive false
   (box :class "clock-widget" :orientation "v" :halign "center" :valign "center"
     (label :class "big-clock" :text time)
     (label :class "big-date" :text date)))
+

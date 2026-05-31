@@ -1,0 +1,49 @@
+format = """
+[╭─](bold #7ecfef)\
+$os\
+$directory\
+$git_branch\
+$git_status\
+$cmd_duration\
+$line_break\
+[╰─](bold #7ecfef)\
+$character"""
+
+[os]
+disabled = false
+style = "bold #7ecfef"
+
+[os.symbols]
+Arch = " "
+
+[directory]
+format = "[ $path ]($style)"
+style = "bold #a8daf0"
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+format = "[ $symbol$branch ]($style)"
+symbol = " "
+style = "bold #7ecfef"
+
+[git_status]
+format = "[$all_status$ahead_behind ]($style)"
+style = "bold #c8e6f5"
+
+[cmd_duration]
+format = "[ 󱦟 $duration ]($style)"
+style = "bold #6ccf88"
+min_time = 2_000
+
+[character]
+success_symbol = "[❯](bold #7ecfef)"
+error_symbol = "[❯](bold #ef6c6c)"
+
+[python]
+format = "[ $symbol$version ]($style)"
+style = "bold #a8daf0"
+
+[nodejs]
+format = "[ $symbol$version ]($style)"
+style = "bold #6ccf88"

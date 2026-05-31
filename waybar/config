@@ -5,19 +5,52 @@
     "spacing": 6,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["pulseaudio", "network", "battery", "custom/weather"],
+    "modules-right": ["pulseaudio", "network", "bluetooth", "battery"],
+
     "hyprland/workspaces": {
-    "format": "●",
-    "on-click": "activate"
-},
+        "format": "⬤",
+        "on-click": "activate"
+    },
+
     "clock": {
         "format": "{:%H:%M  %a %d %b}",
         "tooltip": false
     },
-    "battery": { "format": " {capacity}%" },
-    "pulseaudio": { "format": " {volume}%" },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁 muted",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+        "tooltip": false
+    },
+
     "network": {
-        "format-wifi": " {essid}",
-        "format-disconnected": "睊 off"
+        "format-wifi": "󰤨 {essid}",
+        "format-disconnected": "󰤭 off",
+        "format-ethernet": "󰈀 {ipaddr}",
+        "on-click": "kitty -e nmtui",
+        "tooltip-format-wifi": "Signal: {signalStrength}%\nIP: {ipaddr}",
+        "tooltip": true
+    },
+
+    "bluetooth": {
+        "format": "󰂯",
+        "format-connected": "󰂱 {device_alias}",
+        "format-disabled": "󰂲",
+        "on-click": "kitty -e bluetuith",
+        "tooltip-format": "{controller_alias}\n{num_connections} connected",
+        "tooltip": true
+    },
+
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip": false
     }
 }

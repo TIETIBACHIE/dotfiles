@@ -1,0 +1,19 @@
+set shell bash
+set scrolloff 10
+set icons true
+set period 1
+set previewer ~/.config/lf/preview.sh
+
+cmd open ${{
+    case $(file --mime-type "$f" -b) in
+        image/*) imv "$f" ;;
+        video/*) mpv "$f" ;;
+        audio/*) mpv "$f" ;;
+        *) $EDITOR "$f" ;;
+    esac
+}}
+
+map <enter> open
+map D delete
+map . set hidden!
+map r rename

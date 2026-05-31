@@ -1,0 +1,44 @@
+* {
+  background-color: rgba(13, 27, 42, 0.0);
+}
+
+window, .window, .background {
+  background-color: rgba(13, 27, 42, 0.6);
+}
+
+headerbar, .titlebar {
+  background-color: rgba(17, 42, 62, 0.95);
+  color: #a8daf0;
+  border-bottom: 1px solid rgba(126, 207, 239, 0.2);
+}
+
+.sidebar, placessidebar {
+  background-color: rgba(13, 27, 42, 0.7);
+  color: #a8daf0;
+}
+
+.view, iconview, .icon-view {
+  background-color: rgba(13, 27, 42, 0.5);
+  color: #a8daf0;
+}
+row:hover, .sidebar-item:hover {
+  background-color: rgba(126, 207, 239, 0.15);
+}
+
+row:selected, .sidebar-item:selected {
+  background-color: rgba(126, 207, 239, 0.25);
+  color: #7ecfef;
+}
+placessidebar row:hover {
+  background-color: rgba(126, 207, 239, 0.15);
+  color: #a8daf0;
+}
+
+placessidebar row:selected {
+  background-color: rgba(126, 207, 239, 0.25);
+  color: #7ecfef;
+}
+
+placessidebar {
+  color: #a8daf0;
+}
