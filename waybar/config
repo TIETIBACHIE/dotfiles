@@ -1,0 +1,23 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 66,
+    "spacing": 6,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "network", "battery", "custom/weather"],
+    "hyprland/workspaces": {
+    "format": "●",
+    "on-click": "activate"
+},
+    "clock": {
+        "format": "{:%H:%M  %a %d %b}",
+        "tooltip": false
+    },
+    "battery": { "format": " {capacity}%" },
+    "pulseaudio": { "format": " {volume}%" },
+    "network": {
+        "format-wifi": " {essid}",
+        "format-disconnected": "睊 off"
+    }
+}

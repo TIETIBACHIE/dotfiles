@@ -1,0 +1,63 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+}
+
+* {
+    bg0: #0d1b2aee;
+    bg1: #112a3ecc;
+    bg2: #1a3a52cc;
+    fg0: #a8daf0;
+    fg1: #7ecfef;
+    ac:  #7ecfef;
+
+    background-color: transparent;
+    text-color: @fg0;
+}
+
+window {
+    background-color: @bg0;
+    border: 1px;
+    border-color: @ac;
+    border-radius: 12px;
+    width: 480px;
+    padding: 12px;
+}
+
+mainbox {
+    background-color: transparent;
+}
+
+inputbar {
+    background-color: @bg1;
+    border-radius: 8px;
+    padding: 8px 14px;
+    margin: 0 0 8px 0;
+}
+
+prompt, entry {
+    background-color: transparent;
+    text-color: @fg0;
+}
+
+listview {
+    background-color: transparent;
+    lines: 8;
+}
+
+element {
+    background-color: transparent;
+    text-color: @fg1;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+element selected {
+    background-color: @bg2;
+    text-color: #c8e6f5;
+}
+
+element-icon {
+    size: 24px;
+    padding: 0 8px 0 0;
+}

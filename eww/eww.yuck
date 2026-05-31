@@ -1,0 +1,72 @@
+;; Variables
+(defpoll time :interval "1s" `date +"%H:%M"`)
+(defpoll date :interval "60s" `date +"%A, %d %B"`)
+(defpoll weather :interval "300s" `curl -s "wttr.in/Singapore?format=%C" 2>/dev/null`)
+(defpoll temp :interval "300s" `curl -s "wttr.in/Singapore?format=%t" 2>/dev/null`)
+(defpoll humid :interval "300s" `curl -s "wttr.in/Singapore?format=%h" 2>/dev/null`)
+(defpoll cpu :interval "5s" `top -bn1 | grep "Cpu(s)" | awk '{print $2}'`)
+(defpoll ram :interval "5s" `free -h | awk '/^Mem:/ {print $3 " / " $2}'`)
+(defpoll disk :interval "60s" `df -h / | awk 'NR==2 {print $3 " / " $2}'`)
+(defpoll updates :interval "600s" `checkupdates 2>/dev/null | wc -l`)
+(defpoll uptime :interval "60s" `uptime -p | sed 's/up //'`)
+(defpoll cal :interval "3600s" `cal | sed 's/^/  /'`)
+
+(defwidget left-panel []
+  (box :class "left-panel" :orientation "v" :space-evenly false :spacing 14
+    (box :class "section" :orientation "v" :spacing 4
+      (label :class "section-title" :text "󰃭  Calendar" :halign "start")
+      (label :class "cal" :text cal :halign "center" :justify "left"))
+    (box :class "divider")
+    (box :class "section" :orientation "v" :spacing 6
+      (label :class "section-title" :text "󰖙  Weather" :halign "start")
+      (label :class "weather-main" :text weather :halign "start")
+      (label :class "weather-info" :text "󰔄  ${temp}" :halign "start")
+      (label :class "weather-info" :text "󰖎  ${humid}" :halign "start"))))
+
+(defwidget right-panel []
+  (box :class "right-panel" :orientation "v" :space-evenly false :spacing 16
+    (box :class "section" :orientation "v" :spacing 4
+      (label :class "section-title" :text "󰍛  CPU" :halign "start")
+      (label :class "info-value" :text "${cpu}% used" :halign "start"))
+    (box :class "divider")
+    (box :class "section" :orientation "v" :spacing 4
+      (label :class "section-title" :text "󰘚  Memory" :halign "start")
+      (label :class "info-value" :text ram :halign "start"))
+    (box :class "divider")
+    (box :class "section" :orientation "v" :spacing 4
+      (label :class "section-title" :text "󰋊  Disk" :halign "start")
+      (label :class "info-value" :text disk :halign "start"))
+    (box :class "divider")
+    (box :class "section" :orientation "v" :spacing 4
+      (label :class "section-title" :text "󰚰  Updates" :halign "start")
+      (label :class "info-value" :text "${updates} pending" :halign "start"))
+    (box :class "divider")
+    (box :class "section" :orientation "v" :spacing 4
+      (label :class "section-title" :text "󰥔  Uptime" :halign "start")
+      (label :class "info-value" :text uptime :halign "start"))))
+
+(defwindow left-panel
+  :monitor 0
+  :geometry (geometry :x "8px" :y "76px" :width "280px" :height "500px" :anchor "top left")
+  :stacking "fg"
+  :focusable false
+  :exclusive false
+  (left-panel))
+
+(defwindow right-panel
+  :monitor 0
+  :geometry (geometry :x "8px" :y "76px" :width "280px" :height "500px" :anchor "top right")
+  :stacking "fg"
+  :focusable false
+  :exclusive false
+  (right-panel))
+
+(defwindow clock-panel
+  :monitor 0
+  :geometry (geometry :x "0px" :y "0px" :width "380px" :height "140px" :anchor "center")
+  :stacking "fg"
+  :focusable false
+  :exclusive false
+  (box :class "clock-widget" :orientation "v" :halign "center" :valign "center"
+    (label :class "big-clock" :text time)
+    (label :class "big-date" :text date)))
